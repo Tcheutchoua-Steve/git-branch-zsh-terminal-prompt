@@ -11,7 +11,7 @@ Open `~/.zshrc` in your favorite editor and add the following content to the bot
 
 ```sh
 git_branch() {
-    branch=$(git symbolic-ref HEAD 2> /dev/null | awk -F/ '{print $NF}')
+    branch=$(git symbolic-ref HEAD 2> /dev/null | sed 's|refs/heads/||')
     if [ ! -z $branch ]; then
         echo " ($branch)"
     fi
